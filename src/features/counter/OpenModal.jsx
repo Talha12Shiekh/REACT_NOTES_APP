@@ -49,7 +49,8 @@ const OpenModal = forwardRef(function OpenModal({editNoteInformation,seteditNote
                     key: nanoid,
                     time:Date.now(),
                     important:false,
-                    pinned:false
+                    pinned:false,
+                    key:Date.now()
                   })
                 );
                 seteditNoteInformation({
@@ -62,7 +63,8 @@ const OpenModal = forwardRef(function OpenModal({editNoteInformation,seteditNote
                   index:editNoteInformation.id,
                   title:notesInformation.title,
                   description:notesInformation.description,
-                  time:Date.now()
+                  time:Date.now(),
+                  key:Date.now()
                 }));
                 seteditNoteInformation({
                   id:null,

@@ -197,7 +197,6 @@ html {
   top: 50%;
   left: 50%;
   width: 35vw;
-  height: 82vh;
   border: none;
   background: var(--accent);
   box-shadow: 5px 5px 5px var(--secondary);
@@ -269,13 +268,11 @@ html {
 @media screen and (max-width: 880px) {
   .modal {
     width: 45vw;
-    height: 70vh;
   }
 }
 @media screen and (max-width: 690px) {
   .modal {
     width: 70vw;
-    height: 70vh;
   }
 }
 

@@ -22,7 +22,7 @@ const Notes = () => {
 
   const [notesInformation,setnotesInformation] = useState({
     title:"",
-    description:""
+    description:"",
   })
 
   const addModalRef = useRef(null);

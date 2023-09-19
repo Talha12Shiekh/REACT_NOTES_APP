@@ -1,9 +1,10 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef ,useState,useMemo} from "react";
 import "../../App.css";
 import { useSelector } from "react-redux";
 
 const SearchModal = forwardRef(function SearchModal({setReadedNoteText}, ref) {
   const notes = useSelector((state) => state.notesReducer.notes);
+  const [query,setquery] = useState("");
 
 
   const handleReadNotes = (key) => {
@@ -16,6 +17,12 @@ const SearchModal = forwardRef(function SearchModal({setReadedNoteText}, ref) {
     ref.searchModalRef.current.close();
     ref.readModalRef.current.showModal();
   }
+
+  const filteredNotes = useMemo(() => {
+    return notes.filter(note => {
+      return note.title.toLowerCase().includes(query.toLowerCase())
+    })
+  },[notes,query])
 
   return (
     <dialog
@@ -35,9 +42,11 @@ const SearchModal = forwardRef(function SearchModal({setReadedNoteText}, ref) {
         type="text"
         placeholder="Search Your notes"
         id="filter_notes_input"
+        value={query}
+        onChange={e => setquery(e.target.value)}
       />
       <div className="filter_notes">
-        {notes.map((note,index) => {
+        {filteredNotes.length !== 0 ? filteredNotes.map((note,index) => {
           return (
             <div key={note.key} className="single_recover_note">
               <div>{note.title}</div>
@@ -48,7 +57,7 @@ const SearchModal = forwardRef(function SearchModal({setReadedNoteText}, ref) {
               </div>
             </div>
           );
-        })}
+        }) : <div style={{fontSize:"1rem"}}>No Items matches your search</div>}
       </div>
     </dialog>
   );

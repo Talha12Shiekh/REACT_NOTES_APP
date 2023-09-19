@@ -172,7 +172,7 @@ const Note = forwardRef(function Note({title,description,time,index,important,pi
                 style={{ filter: `invert(${important ? 1 : 0})` }}
               />
             ) : (
-              <div class="cross">&times;</div>
+              <div className="cross">&times;</div>
             )}
           </div>
         </div>

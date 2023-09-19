@@ -37,6 +37,7 @@ export const NotesSlice = createSlice({
         title: payload.title,
         description: payload.description,
         time: payload.time,
+        key:payload.key
       };
     },
     deleteRecoverNotes:(state,{payload}) => {
